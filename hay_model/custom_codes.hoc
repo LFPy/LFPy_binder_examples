@@ -1,7 +1,7 @@
 // Author: Etay Hay, 2011
 //    Models of Neocortical Layer 5b Pyramidal Cells Capturing a Wide Range of
 //    Dendritic and Perisomatic Active Properties
-//    (Hay et al., PLoS Computational Biology, 2011) 
+//    (Hay et al., PLoS Computational Biology, 2011)
 //
 // Model of L5 Pyramidal Cell, constrained both for BAC firing and Current Step Firing
 
@@ -71,11 +71,11 @@ proc distribute_channels()	{local dist,val,base,maxLength
 // $s1 section
 func getLongestBranch(){local maxL,d localobj distallist,sref
     sprint(tstr,"%s distance()",$s1)
-    execute(tstr,this)    
-    
+    execute(tstr,this)
+
   	if(0==strcmp($s1,"axon")){
             sprint(tstr,"%s[0] distance(1)",$s1)
-            execute(tstr,this)    
+            execute(tstr,this)
   	}
 		maxL = 0
 		d = 0
@@ -119,6 +119,7 @@ func calculate_distribution()	{local value
 proc delete_axon(){
     axon {delete_section()}
     create axon[2]
+    axon all.append()
     access axon[0]{
       L= 30
       diam = 1
@@ -132,10 +133,6 @@ proc delete_axon(){
 
   nSecAxonal = 2
   connect axon(0), soma(0.5)
-  connect axon[1](0), axon[0](1) 
+  connect axon[1](0), axon[0](1)
   access soma
 }
-
-
-
-
